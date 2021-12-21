@@ -66,18 +66,28 @@ class Clients
     $this->preferred_method_of_payment = $preferred_method_of_payment;
     }
 
+    function insertCreditCard($cc)
+    {
+        $this->creditCard = $cc;
+    }
+
+    function getCreditCard()
+    {
+        return $this->creditCard;
+    }
 }
 
 class PlatinumClients extends Clients
 {
     protected $discount;
 
+
     public function getAge()
     {
         return $this->age;
     }
 
-    public function setDiscount(int $age)
+    public function setDiscount($age)
     {
         if($age > 60)
         {
@@ -102,12 +112,25 @@ class CreditCard {
     protected $CCnumber;
     protected $expiration_date;
     protected $CCV;
+
+    function __construct(int $CCnumber, string $expiration_date, int $CCV)
+    {
+        $this->CCnumber = $CCnumber;
+        $this->expiration_date = $expiration_date;
+        $this->CCV = $CCV;
+    }
     
 }
 
 $plat_1 = new PlatinumClients('Gino', 'Pilotino', 34, 'via Barbagianni 9', 'pilogino@gmail.com', 'credit card');
-$plat_1->setDiscount(getAge());
+$plat_1->setDiscount($age);
+$cc_1 = new CreditCard(123124132412412, '05/22', 246);
+
+$plat_1->insertCreditCard($cc_1);
 // dd($plat_1->getAge());
+dd($plat_1);
+// dd($plat_1->getCreditCard());
+
 
 
 
