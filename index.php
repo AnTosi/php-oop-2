@@ -1,4 +1,15 @@
 <?php
+
+function dd(...$params)
+{
+    foreach($params as $param) {
+        #code...
+        echo '<pre>';
+        var_dump($param);
+        echo'</pre>';
+    }
+    die();
+}
 class Products
 {
     public $name;
@@ -40,6 +51,11 @@ class Clients
     protected $email;
     protected $preferred_method_of_payment;
 
+    public function getAge()
+    {
+        return $this->age;
+    }
+
     function __construct($firstname, $lastname, $age, $address, $email, $preferred_method_of_payment)
     {
     $this->firstname = $firstname;
@@ -55,7 +71,44 @@ class Clients
 class PlatinumClients extends Clients
 {
     protected $discount;
+
+    public function getAge()
+    {
+        return $this->age;
+    }
+
+    public function setDiscount(int $age)
+    {
+        if($age > 60)
+        {
+            $this->discount = 30;
+        }
+
+        else 
+        {
+            $this->discount = 20;
+        }
+    }
+
+    public function getDiscount()
+    {
+        return $this->discount;
+    }
+
 }
+
+class CreditCard {
+
+    protected $CCnumber;
+    protected $expiration_date;
+    protected $CCV;
+    
+}
+
+$plat_1 = new PlatinumClients('Gino', 'Pilotino', 34, 'via Barbagianni 9', 'pilogino@gmail.com', 'credit card');
+$plat_1->setDiscount(getAge());
+// dd($plat_1->getAge());
+
 
 
 
