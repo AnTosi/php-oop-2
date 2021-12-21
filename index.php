@@ -104,7 +104,6 @@ class PlatinumClients extends Clients
     {
         return $this->discount;
     }
-
 }
 
 class CreditCard {
@@ -130,6 +129,8 @@ $plat_1->insertCreditCard($cc_1);
 // dd($plat_1->getAge());
 dd($plat_1);
 // dd($plat_1->getCreditCard());
+
+//mi aggiunge all'interno dell'oggetto $plat_1 appartenente alla classe PlatinumClients un oggetto CreditCard.
 
 
 
